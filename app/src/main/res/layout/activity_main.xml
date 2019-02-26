@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="#BD0606"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+
+
     tools:context=".MainActivity">
 
 
@@ -13,6 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginTop="150dp"
+          android:drawableLeft="@drawable/icon_lock"
+        android:drawablePadding="20dp"
+        android:background="@drawable/rectangle"
         android:inputType="textPersonName"
         android:text="Name@gmail.com    " />
 

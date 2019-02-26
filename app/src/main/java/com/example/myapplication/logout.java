@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,19 +14,34 @@ public class logout extends AppCompatActivity {
 
     Button logout;
     FirebaseAuth firebaseAuth;
+    int value;
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
 
 
-    logout=findViewById(R.id.logout);
+        logout=findViewById(R.id.logout);
+        value=0;
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor edit=sharedPreferences.edit();
+        edit.putInt("key",value);
+        edit.apply();
 
     logout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             firebaseAuth=FirebaseAuth.getInstance();
+
+
+            value=0;
+            sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor edit=sharedPreferences.edit();
+            edit.putInt("key",value);
+            edit.apply();
 
             firebaseAuth.signOut();
             finish();

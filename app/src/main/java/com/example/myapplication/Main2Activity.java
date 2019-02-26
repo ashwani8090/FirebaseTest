@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ public class Main2Activity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
 
     FirebaseDatabase firebaseDatabase;
+    int value;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,10 @@ public class Main2Activity extends AppCompatActivity {
 
 
         button=findViewById(R.id.button);
+
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        value=sharedPreferences.getInt("key",1);
+
 
 
 
@@ -61,26 +69,33 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-
+    if (value==1) {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                email=findViewById(R.id.email);
-                password=findViewById(R.id.password);
-                Email=email.getText().toString().trim();
-                Password=password.getText().toString().trim();
+                email = findViewById(R.id.email);
+                password = findViewById(R.id.password);
+                Email = email.getText().toString().trim();
+                Password = password.getText().toString().trim();
 
 
-               UserLogin(Email,Password);
+                UserLogin(Email, Password);
 
 
             }
         });
 
 
+    }
 
+    else{
+
+        startActivity(new Intent(Main2Activity.this,logout.class));
+
+
+    }
 
 
 
